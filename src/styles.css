@@ -336,6 +336,27 @@ h3 {
   isolation: isolate;
 }
 
+.visual-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.92;
+  transform: scale(1.02);
+  filter: saturate(1.02) contrast(1.04);
+}
+
+.visual-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 12, 10, 0.1) 0%, rgba(8, 12, 10, 0.06) 28%, rgba(8, 12, 10, 0.72) 100%),
+    linear-gradient(90deg, rgba(10, 15, 12, 0.16) 0%, rgba(10, 15, 12, 0) 42%, rgba(10, 15, 12, 0.28) 100%);
+  z-index: 0;
+}
+
 .visual-stage::after {
   content: "";
   position: absolute;
@@ -344,54 +365,6 @@ h3 {
   border-radius: 26px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.38));
   z-index: 1;
-}
-
-.sun-disc {
-  position: absolute;
-  top: 62px;
-  right: 74px;
-  width: 180px;
-  height: 180px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(239, 204, 143, 0.96) 0%, rgba(239, 204, 143, 0.16) 70%, transparent 100%);
-  filter: blur(2px);
-}
-
-.mist-band {
-  position: absolute;
-  left: -6%;
-  right: -6%;
-  height: 100px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  filter: blur(28px);
-}
-
-.mist-one {
-  top: 180px;
-}
-
-.mist-two {
-  top: 250px;
-  opacity: 0.6;
-}
-
-.ridge {
-  position: absolute;
-  inset: auto -8% 0;
-  border-radius: 40% 40% 0 0;
-}
-
-.ridge-back {
-  height: 54%;
-  background: linear-gradient(180deg, rgba(74, 112, 81, 0.34) 0%, rgba(28, 47, 37, 0.95) 100%);
-  clip-path: polygon(0 70%, 18% 56%, 34% 62%, 50% 42%, 68% 56%, 86% 38%, 100% 52%, 100% 100%, 0 100%);
-}
-
-.ridge-front {
-  height: 42%;
-  background: linear-gradient(180deg, rgba(20, 31, 25, 0) 0%, rgba(10, 16, 13, 0.82) 16%, rgba(7, 11, 9, 0.98) 100%);
-  clip-path: polygon(0 72%, 12% 64%, 28% 70%, 40% 54%, 56% 64%, 72% 50%, 88% 60%, 100% 46%, 100% 100%, 0 100%);
 }
 
 .ticket-card,
@@ -599,6 +572,7 @@ h3 {
   transition:
     transform 0.22s ease,
     border-color 0.22s ease;
+  isolation: isolate;
 }
 
 .experience-card::before {
@@ -606,13 +580,14 @@ h3 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 80% 20%, rgba(239, 204, 143, 0.2), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.36));
+    radial-gradient(circle at 80% 18%, rgba(239, 204, 143, 0.26), transparent 26%),
+    linear-gradient(180deg, rgba(5, 10, 8, 0.02) 0%, rgba(5, 10, 8, 0.16) 34%, rgba(5, 10, 8, 0.8) 100%);
+  z-index: 1;
 }
 
 .experience-card > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .experience-card p {
@@ -621,21 +596,28 @@ h3 {
   font-size: 1rem;
 }
 
+.experience-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.88;
+  filter: saturate(1.04) contrast(1.05);
+  z-index: 0;
+}
+
 .card-wide {
   grid-column: span 7;
   min-height: 340px;
-  background:
-    linear-gradient(180deg, rgba(203, 109, 50, 0.14), rgba(15, 24, 20, 0.94)),
-    linear-gradient(135deg, #334939 0%, #101a16 100%);
+  background: linear-gradient(135deg, #334939 0%, #101a16 100%);
 }
 
 .card-tall {
   grid-column: span 5;
   grid-row: span 2;
   min-height: 520px;
-  background:
-    linear-gradient(180deg, rgba(82, 117, 92, 0.18), rgba(10, 16, 13, 0.96)),
-    linear-gradient(135deg, #26392d 0%, #111c17 100%);
+  background: linear-gradient(135deg, #26392d 0%, #111c17 100%);
 }
 
 .card-small {
@@ -665,68 +647,69 @@ h3 {
   transition:
     transform 0.22s ease,
     border-color 0.22s ease;
+  isolation: isolate;
 }
 
 .destination-tile::before {
   content: "";
   position: absolute;
-  inset: -18% auto auto 56%;
-  width: 180px;
-  height: 180px;
-  border-radius: 999px;
-  background: rgba(239, 204, 143, 0.18);
-  filter: blur(12px);
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 11, 9, 0.04) 0%, rgba(7, 11, 9, 0.14) 34%, rgba(7, 11, 9, 0.78) 100%),
+    linear-gradient(90deg, rgba(203, 109, 50, 0.14) 0%, rgba(203, 109, 50, 0) 42%);
+  z-index: 1;
 }
 
 .destination-tile h3,
 .experience-card h3 {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .destination-tile span {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+.destination-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  filter: saturate(1.04) contrast(1.02);
+  z-index: 0;
 }
 
 .tile-1 {
   grid-column: span 5;
   min-height: 320px;
-  background:
-    linear-gradient(180deg, rgba(203, 109, 50, 0.16), rgba(11, 18, 15, 0.94)),
-    linear-gradient(135deg, #4f3626 0%, #111a16 100%);
+  background: linear-gradient(135deg, #4f3626 0%, #111a16 100%);
 }
 
 .tile-2 {
   grid-column: span 3;
   min-height: 320px;
-  background:
-    linear-gradient(180deg, rgba(64, 105, 76, 0.14), rgba(11, 18, 15, 0.94)),
-    linear-gradient(135deg, #2d4435 0%, #101915 100%);
+  background: linear-gradient(135deg, #2d4435 0%, #101915 100%);
 }
 
 .tile-3 {
   grid-column: span 4;
   min-height: 320px;
-  background:
-    linear-gradient(180deg, rgba(88, 120, 94, 0.14), rgba(11, 18, 15, 0.94)),
-    linear-gradient(135deg, #314939 0%, #101915 100%);
+  background: linear-gradient(135deg, #314939 0%, #101915 100%);
 }
 
 .tile-4 {
   grid-column: span 7;
   min-height: 250px;
-  background:
-    linear-gradient(180deg, rgba(239, 204, 143, 0.12), rgba(11, 18, 15, 0.94)),
-    linear-gradient(135deg, #544632 0%, #111915 100%);
+  background: linear-gradient(135deg, #544632 0%, #111915 100%);
 }
 
 .tile-5 {
   grid-column: span 5;
   min-height: 250px;
-  background:
-    linear-gradient(180deg, rgba(82, 117, 92, 0.14), rgba(11, 18, 15, 0.94)),
-    linear-gradient(135deg, #2a4032 0%, #101814 100%);
+  background: linear-gradient(135deg, #2a4032 0%, #101814 100%);
 }
 
 .cta-poster {
@@ -857,13 +840,6 @@ h3 {
 
   .hero-visual {
     min-height: 500px;
-  }
-
-  .sun-disc {
-    top: 78px;
-    right: 28px;
-    width: 130px;
-    height: 130px;
   }
 
   .ticket-primary {
