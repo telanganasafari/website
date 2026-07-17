@@ -1,25 +1,41 @@
 import bogathaPoster from "./assets/posters/bogatha.jpg";
+import janagalanchaPoster from "./assets/posters/janagalancha-fort.jpg";
+import kondaparthiPoster from "./assets/posters/kondaparthi-tribal-village.jpg";
 import kotaGulluPoster from "./assets/posters/kota-gullu.jpg";
+import laknavaramPoster from "./assets/posters/laknavaram-lake.jpg";
 import mallurPoster from "./assets/posters/mallur-narasimha.jpg";
 import medaramPoster from "./assets/posters/medaram.jpg";
+import muluguCoverPoster from "./assets/posters/mulugu-cover.jpg";
 import ramappaPoster from "./assets/posters/ramappa.jpg";
 
-const featuredStories = [
+const destinationStories = [
   {
     title: "Bogatha Waterfall",
     subtitle: "Telangana's Niagara",
     distance: "120 km from Warangal",
     type: "Waterfall escape",
-    summary: "Dense green surroundings, broad waterfall views, and strong weekend demand.",
+    summary:
+      "A high-interest nature stop with broad waterfall views and strong weekend appeal.",
     image: bogathaPoster,
     alt: "Telangana Safari poster featuring Bogatha Waterfall.",
+  },
+  {
+    title: "Laknavaram Lake",
+    subtitle: "Scenic lake and nature retreat",
+    distance: "72 km from Warangal",
+    type: "Lake circuit",
+    summary:
+      "Bridge views, boating, and an easy nature-led stop that works well in mixed itineraries.",
+    image: laknavaramPoster,
+    alt: "Telangana Safari poster featuring Laknavaram Lake.",
   },
   {
     title: "Ramappa Heritage Site",
     subtitle: "UNESCO world heritage",
     distance: "60 km from Warangal",
     type: "Heritage route",
-    summary: "Kakatiya architecture, detailed stonework, and a strong photography angle.",
+    summary:
+      "Kakatiya architecture and carved stonework that give the brand a serious heritage layer.",
     image: ramappaPoster,
     alt: "Telangana Safari poster featuring Ramappa Heritage Site.",
   },
@@ -28,7 +44,8 @@ const featuredStories = [
     subtitle: "Ancient temple complex",
     distance: "56 km from Warangal",
     type: "Temple trail",
-    summary: "Compact heritage stop with old temple structures and an atmospheric landscape.",
+    summary:
+      "Compact ruins with strong visual texture and a practical short-route cultural stop.",
     image: kotaGulluPoster,
     alt: "Telangana Safari poster featuring Kota Gullu.",
   },
@@ -37,7 +54,8 @@ const featuredStories = [
     subtitle: "Hemachala Lakshmi Narasimha Kshetram",
     distance: "125 km from Warangal",
     type: "Spiritual getaway",
-    summary: "Sacred route through the hills with devotional, cultural, and forest context.",
+    summary:
+      "A sacred route through forested surroundings that broadens the devotional side of the site.",
     image: mallurPoster,
     alt: "Telangana Safari poster featuring Mallur Narasimha Swamy Temple.",
   },
@@ -46,50 +64,73 @@ const featuredStories = [
     subtitle: "World's largest tribal gathering",
     distance: "99 km from Warangal",
     type: "Festival route",
-    summary: "A major cultural event that broadens the brand beyond standard sightseeing.",
+    summary:
+      "A large cultural event that adds scale and a distinctive tribal identity to the homepage.",
     image: medaramPoster,
     alt: "Telangana Safari poster featuring Medaram Sammakka Sarakka Jathara.",
+  },
+  {
+    title: "Janagalancha Fort",
+    subtitle: "Trekking and nature getaway",
+    distance: "90 km from Warangal",
+    type: "Hidden gem",
+    summary:
+      "Fort ruins, trekking context, and broad hill views that support the adventure angle.",
+    image: janagalanchaPoster,
+    alt: "Telangana Safari poster featuring Janagalancha Fort.",
+  },
+  {
+    title: "Kondaparthi Tribal Village",
+    subtitle: "A glimpse into tribal life",
+    distance: "92 km from Warangal",
+    type: "Tribal tourism",
+    summary:
+      "Village life, local traditions, and community context that make the offering feel more specific.",
+    image: kondaparthiPoster,
+    alt: "Telangana Safari poster featuring Kondaparthi Tribal Village.",
   },
 ];
 
 const routeThemes = [
   {
-    title: "Waterfall weekends",
+    title: "Water and weekend escapes",
     copy:
-      "Routes built around Bogatha and nearby nature stops for groups that want the strongest outdoor pull.",
-    image: bogathaPoster,
-    tags: ["Bogatha", "Forest views", "Weekend escape"],
+      "Bogatha and Laknavaram are the strongest nature-led entry points for broad weekend demand.",
+    image: laknavaramPoster,
+    tags: ["Bogatha", "Laknavaram", "Nature trips"],
   },
   {
-    title: "Heritage circuits",
+    title: "Heritage and temple circuits",
     copy:
-      "Ramappa, Kota Gullu, and temple-led routes give the brand a stronger cultural edge than a generic trip page.",
+      "Ramappa, Kota Gullu, and Mallur create a clearer heritage-and-devotional route family.",
     image: ramappaPoster,
-    tags: ["Ramappa", "Kota Gullu", "Temple trail"],
+    tags: ["Ramappa", "Kota Gullu", "Mallur"],
   },
   {
-    title: "Sacred and festival trails",
+    title: "Mulugu culture and offbeat trails",
     copy:
-      "Mallur and Medaram introduce spiritual, seasonal, and community-led travel context into the homepage.",
-    image: medaramPoster,
-    tags: ["Mallur", "Medaram", "Cultural route"],
+      "Medaram, Kondaparthi, and Janagalancha add tribal, offbeat, and trekking context.",
+    image: kondaparthiPoster,
+    tags: ["Medaram", "Kondaparthi", "Janagalancha"],
   },
 ];
 
 const quickFacts = [
-  { value: "5", label: "Featured destinations" },
-  { value: "12", label: "Seats per batch" },
+  { value: "8", label: "Must-visit places" },
+  { value: "9", label: "Poster visuals used" },
   { value: "2", label: "Departure cities" },
 ];
 
 const placeChips = [
   "Bogatha",
+  "Laknavaram",
   "Ramappa",
   "Kota Gullu",
   "Mallur",
   "Medaram",
+  "Janagalancha",
+  "Kondaparthi",
   "Mulugu",
-  "Warangal",
 ];
 
 function App() {
@@ -102,7 +143,7 @@ function App() {
           <span className="brand-mark">TS</span>
           <span className="brand-lockup">
             <strong>Telangana Safari</strong>
-            <span>Waterfalls, heritage trails, temple routes, and festival journeys.</span>
+            <span>Waterfalls, heritage sites, tribal routes, and forest journeys.</span>
           </span>
         </a>
 
@@ -125,11 +166,11 @@ function App() {
       <main>
         <section className="hero" id="top">
           <div className="hero-copy">
-            <p className="kicker">Explore the heritage of Telangana</p>
-            <h1>Waterfalls, temples, and tribal routes from Warangal.</h1>
+            <p className="kicker">Mulugu district and beyond</p>
+            <h1>Eight places. One stronger Telangana Safari homepage.</h1>
             <p className="hero-subtext">
-              Weekend departures from Warangal and Hyderabad covering Bogatha,
-              Ramappa, Kota Gullu, Mallur, and Medaram.
+              Weekend departures from Warangal and Hyderabad covering waterfalls,
+              temple circuits, lake routes, tribal villages, and cultural gatherings.
             </p>
 
             <div className="hero-actions">
@@ -162,19 +203,25 @@ function App() {
             </div>
           </div>
 
-          <div className="hero-collage" aria-label="Featured Telangana Safari posters">
+          <div className="hero-collage" aria-label="Telangana Safari posters">
             <article className="poster-frame poster-main">
               <img
-                src={featuredStories[0].image}
-                alt={featuredStories[0].alt}
+                src={muluguCoverPoster}
+                alt="Telangana Safari Mulugu district overview poster."
                 fetchPriority="high"
               />
             </article>
             <article className="poster-frame poster-side poster-top">
-              <img src={featuredStories[1].image} alt={featuredStories[1].alt} />
+              <img
+                src={laknavaramPoster}
+                alt="Telangana Safari poster featuring Laknavaram Lake."
+              />
             </article>
             <article className="poster-frame poster-side poster-bottom">
-              <img src={featuredStories[4].image} alt={featuredStories[4].alt} />
+              <img
+                src={janagalanchaPoster}
+                alt="Telangana Safari poster featuring Janagalancha Fort."
+              />
             </article>
           </div>
         </section>
@@ -182,12 +229,12 @@ function App() {
         <section className="poster-showcase" id="posters">
           <div className="section-heading">
             <p className="kicker">Signature destinations</p>
-            <h2>Waterfalls, heritage sites, temple trails, and cultural routes.</h2>
+            <h2>Eight destination stories built from the full poster set.</h2>
           </div>
 
           <div className="poster-grid">
-            {featuredStories.map((story, index) => (
-              <article className={`poster-card poster-card-${index + 1}`} key={story.title}>
+            {destinationStories.map((story) => (
+              <article className="poster-card" key={story.title}>
                 <div className="poster-media">
                   <img src={story.image} alt={story.alt} loading="lazy" />
                 </div>
@@ -206,8 +253,8 @@ function App() {
 
         <section className="circuits-section" id="circuits">
           <div className="section-heading">
-            <p className="kicker">Choose your route style</p>
-            <h2>Outdoor weekends, heritage circuits, and sacred cultural journeys.</h2>
+            <p className="kicker">Route families</p>
+            <h2>Nature weekends, heritage circuits, and tribal-cultural journeys.</h2>
           </div>
 
           <div className="circuit-grid">

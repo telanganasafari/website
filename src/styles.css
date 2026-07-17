@@ -396,7 +396,7 @@ h3 {
 
 .poster-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -416,17 +416,6 @@ h3 {
 .poster-card:hover,
 .circuit-card:hover {
   border-color: rgba(244, 234, 214, 0.24);
-}
-
-.poster-card-1,
-.poster-card-4 {
-  grid-column: span 6;
-}
-
-.poster-card-2,
-.poster-card-3,
-.poster-card-5 {
-  grid-column: span 3;
 }
 
 .poster-media {
@@ -574,15 +563,7 @@ h3 {
 
   .poster-grid,
   .circuit-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .poster-card-1,
-  .poster-card-2,
-  .poster-card-3,
-  .poster-card-4,
-  .poster-card-5 {
-    grid-column: span 1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .cta-poster {
@@ -623,6 +604,11 @@ h3 {
 
   .fact-row {
     display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .poster-grid,
+  .circuit-grid {
     grid-template-columns: 1fr;
   }
 
