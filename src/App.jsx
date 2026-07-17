@@ -116,8 +116,8 @@ const routeThemes = [
 ];
 
 const quickFacts = [
-  { value: "8", label: "Featured destinations" },
-  { value: "12", label: "Seats per batch" },
+  { value: "8", label: "Must-visit stops" },
+  { value: "12", label: "Small-batch seats" },
   { value: "2", label: "Departure cities" },
 ];
 
@@ -167,10 +167,10 @@ function App() {
         <section className="hero" id="top">
           <div className="hero-copy">
             <p className="kicker">Mulugu district and beyond</p>
-            <h1>Eight places. One stronger Telangana Safari homepage.</h1>
+            <h1>Discover Mulugu's must-visit escapes.</h1>
             <p className="hero-subtext">
-              Weekend departures from Warangal and Hyderabad covering waterfalls,
-              temple circuits, lake routes, tribal villages, and cultural gatherings.
+              Weekend departures from Warangal and Hyderabad covering Bogatha,
+              Laknavaram, Ramappa, Medaram, and offbeat tribal and heritage routes.
             </p>
 
             <div className="hero-actions">
@@ -229,7 +229,7 @@ function App() {
         <section className="poster-showcase" id="posters">
           <div className="section-heading">
             <p className="kicker">Signature destinations</p>
-            <h2>Eight destination stories built from the full poster set.</h2>
+            <h2>From Bogatha and Laknavaram to Ramappa, Medaram, and more.</h2>
           </div>
 
           <div className="poster-grid">

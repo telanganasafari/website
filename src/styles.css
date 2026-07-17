@@ -581,6 +581,10 @@ h3 {
     padding: 18px;
   }
 
+  .hero {
+    gap: 26px;
+  }
+
   .site-header {
     gap: 14px;
     padding-bottom: 24px;
@@ -596,6 +600,12 @@ h3 {
   .header-pill {
     width: 100%;
     text-align: center;
+  }
+
+  .site-nav a {
+    flex: 1 1 auto;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .brand {
@@ -616,7 +626,27 @@ h3 {
   }
 
   h1 {
-    font-size: clamp(3.2rem, 17vw, 5rem);
+    font-size: clamp(2.5rem, 12vw, 3.8rem);
+    line-height: 0.94;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 8vw, 2.9rem);
+    line-height: 0.96;
+  }
+
+  .hero-subtext {
+    max-width: none;
+    font-size: 0.96rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions .button {
+    width: 100%;
   }
 
   .fact-row {
@@ -629,6 +659,8 @@ h3 {
   }
 
   .chip-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
 
@@ -639,15 +671,21 @@ h3 {
     padding: 9px 12px;
   }
 
+  .chip-row span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    text-align: center;
+  }
+
   .poster-grid,
   .circuit-grid {
     grid-template-columns: 1fr;
   }
 
   .hero-collage {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    display: block;
     min-height: auto;
   }
 
@@ -659,16 +697,15 @@ h3 {
   }
 
   .poster-main {
-    grid-column: 1 / -1;
     aspect-ratio: 4 / 5;
   }
 
   .poster-top {
-    aspect-ratio: 1 / 1;
+    display: none;
   }
 
   .poster-bottom {
-    aspect-ratio: 1 / 1;
+    display: none;
   }
 
   .poster-card,
