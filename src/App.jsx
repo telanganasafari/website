@@ -8,6 +8,8 @@ import medaramPoster from "./assets/posters/medaram.jpg";
 import muluguCoverPoster from "./assets/posters/mulugu-cover.jpg";
 import ramappaPoster from "./assets/posters/ramappa.jpg";
 
+const logoUrl = `${import.meta.env.BASE_URL}logo.jpg`;
+
 const destinationStories = [
   {
     title: "Bogatha Waterfall",
@@ -116,7 +118,9 @@ function App() {
 
       <header className="site-header">
         <a className="brand" href="#top">
-          <span className="brand-mark">TS</span>
+          <span className="brand-mark">
+            <img src={logoUrl} alt="Telangana Safari logo" />
+          </span>
           <span className="brand-lockup">
             <strong>Telangana Safari</strong>
             <span>Waterfalls, heritage sites, tribal routes, and forest journeys.</span>
