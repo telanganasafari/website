@@ -4,3 +4,4 @@ dist
 Thumbs.db
 vite-dev*.log
 vite-dev*.err.log
+.codex-remote-attachments
