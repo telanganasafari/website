@@ -91,30 +91,6 @@ const destinationStories = [
   },
 ];
 
-const routeThemes = [
-  {
-    title: "Water and weekend escapes",
-    copy:
-      "Bogatha and Laknavaram are the strongest nature-led entry points for broad weekend demand.",
-    image: laknavaramPoster,
-    tags: ["Bogatha", "Laknavaram", "Nature trips"],
-  },
-  {
-    title: "Heritage and temple circuits",
-    copy:
-      "Ramappa, Kota Gullu, and Mallur create a clearer heritage-and-devotional route family.",
-    image: ramappaPoster,
-    tags: ["Ramappa", "Kota Gullu", "Mallur"],
-  },
-  {
-    title: "Mulugu culture and offbeat trails",
-    copy:
-      "Medaram, Kondaparthi, and Janagalancha add tribal, offbeat, and trekking context.",
-    image: kondaparthiPoster,
-    tags: ["Medaram", "Kondaparthi", "Janagalancha"],
-  },
-];
-
 const quickFacts = [
   { value: "8", label: "Must-visit stops" },
   { value: "12", label: "Small-batch seats" },
@@ -149,7 +125,6 @@ function App() {
 
         <nav className="site-nav" aria-label="Primary">
           <a href="#posters">Destinations</a>
-          <a href="#circuits">Circuits</a>
           <a href="#contact">Book</a>
         </nav>
 
@@ -245,33 +220,6 @@ function App() {
                   <p className="poster-subtitle">{story.subtitle}</p>
                   <p className="poster-summary">{story.summary}</p>
                   <span className="distance-chip">{story.distance}</span>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="circuits-section" id="circuits">
-          <div className="section-heading">
-            <p className="kicker">Route families</p>
-            <h2>Nature weekends, heritage circuits, and tribal-cultural journeys.</h2>
-          </div>
-
-          <div className="circuit-grid">
-            {routeThemes.map((theme) => (
-              <article className="circuit-card" key={theme.title}>
-                <div className="circuit-media">
-                  <img src={theme.image} alt="" loading="lazy" />
-                </div>
-
-                <div className="circuit-copy">
-                  <h3>{theme.title}</h3>
-                  <p>{theme.copy}</p>
-                  <div className="tag-row">
-                    {theme.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
                 </div>
               </article>
             ))}
