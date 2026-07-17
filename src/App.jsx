@@ -116,8 +116,8 @@ const routeThemes = [
 ];
 
 const quickFacts = [
-  { value: "8", label: "Must-visit places" },
-  { value: "9", label: "Poster visuals used" },
+  { value: "8", label: "Featured destinations" },
+  { value: "12", label: "Seats per batch" },
   { value: "2", label: "Departure cities" },
 ];
 
