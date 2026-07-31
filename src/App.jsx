@@ -1,260 +1,320 @@
-import bogathaPoster from "./assets/posters/bogatha.jpg";
-import janagalanchaPoster from "./assets/posters/janagalancha-fort.jpg";
-import kondaparthiPoster from "./assets/posters/kondaparthi-tribal-village.jpg";
-import kotaGulluPoster from "./assets/posters/kota-gullu.jpg";
-import laknavaramPoster from "./assets/posters/laknavaram-lake.jpg";
-import mallurPoster from "./assets/posters/mallur-narasimha.jpg";
-import medaramPoster from "./assets/posters/medaram.jpg";
-import muluguCoverPoster from "./assets/posters/mulugu-cover.jpg";
-import ramappaPoster from "./assets/posters/ramappa.jpg";
+import { useMemo, useState } from "react";
+import CustomPackageBuilder from "./components/CustomPackageBuilder";
+import PackageCard from "./components/PackageCard";
+import {
+  cityHubs,
+  contactNumber,
+  homeQuickFacts,
+  howItWorks,
+  whatsappUrl,
+} from "./data/travelContent";
 
 const logoUrl = `${import.meta.env.BASE_URL}logo.jpg`;
+const generalEnquiry = [
+  "Hi Telangana Safari, I want to plan a Mulugu trip.",
+  "Please help me choose a ready package or custom Mulugu route.",
+  "I can share travel date, pickup city, passenger count, preferred duration, and budget.",
+].join("\n");
 
-const destinationStories = [
-  {
-    title: "Bogatha Waterfall",
-    subtitle: "Telangana's Niagara",
-    distance: "120 km from Warangal",
-    type: "Waterfall escape",
-    summary:
-      "A high-interest nature stop with broad waterfall views and strong weekend appeal.",
-    image: bogathaPoster,
-    alt: "Telangana Safari poster featuring Bogatha Waterfall.",
-  },
-  {
-    title: "Laknavaram Lake",
-    subtitle: "Scenic lake and nature retreat",
-    distance: "72 km from Warangal",
-    type: "Lake circuit",
-    summary:
-      "Bridge views, boating, and an easy nature-led stop that works well in mixed itineraries.",
-    image: laknavaramPoster,
-    alt: "Telangana Safari poster featuring Laknavaram Lake.",
-  },
-  {
-    title: "Ramappa Heritage Site",
-    subtitle: "UNESCO world heritage",
-    distance: "60 km from Warangal",
-    type: "Heritage route",
-    summary:
-      "Kakatiya architecture and carved stonework that give the brand a serious heritage layer.",
-    image: ramappaPoster,
-    alt: "Telangana Safari poster featuring Ramappa Heritage Site.",
-  },
-  {
-    title: "Kota Gullu",
-    subtitle: "Ancient temple complex",
-    distance: "56 km from Warangal",
-    type: "Temple trail",
-    summary:
-      "Compact ruins with strong visual texture and a practical short-route cultural stop.",
-    image: kotaGulluPoster,
-    alt: "Telangana Safari poster featuring Kota Gullu.",
-  },
-  {
-    title: "Mallur Narasimha Swamy Temple",
-    subtitle: "Hemachala Lakshmi Narasimha Kshetram",
-    distance: "125 km from Warangal",
-    type: "Spiritual getaway",
-    summary:
-      "A sacred route through forested surroundings that broadens the devotional side of the site.",
-    image: mallurPoster,
-    alt: "Telangana Safari poster featuring Mallur Narasimha Swamy Temple.",
-  },
-  {
-    title: "Medaram Jathara",
-    subtitle: "World's largest tribal gathering",
-    distance: "99 km from Warangal",
-    type: "Festival route",
-    summary:
-      "A large cultural event that adds scale and a distinctive tribal identity to the homepage.",
-    image: medaramPoster,
-    alt: "Telangana Safari poster featuring Medaram Sammakka Sarakka Jathara.",
-  },
-  {
-    title: "Janagalancha Fort",
-    subtitle: "Trekking and nature getaway",
-    distance: "90 km from Warangal",
-    type: "Hidden gem",
-    summary:
-      "Fort ruins, trekking context, and broad hill views that support the adventure angle.",
-    image: janagalanchaPoster,
-    alt: "Telangana Safari poster featuring Janagalancha Fort.",
-  },
-  {
-    title: "Kondaparthi Tribal Village",
-    subtitle: "A glimpse into tribal life",
-    distance: "92 km from Warangal",
-    type: "Tribal tourism",
-    summary:
-      "Village life, local traditions, and community context that make the offering feel more specific.",
-    image: kondaparthiPoster,
-    alt: "Telangana Safari poster featuring Kondaparthi Tribal Village.",
-  },
-];
-
-const quickFacts = [
-  { value: "8", label: "Must-visit stops" },
-  { value: "12", label: "Small-batch seats" },
-  { value: "2", label: "Departure cities" },
-];
-
-const placeChips = [
-  "Bogatha",
-  "Laknavaram",
-  "Ramappa",
-  "Kota Gullu",
-  "Mallur",
-  "Medaram",
-  "Janagalancha",
-  "Kondaparthi",
-  "Mulugu",
-];
+function scrollToSection(sectionId) {
+  window.requestAnimationFrame(() => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+}
 
 function App() {
+  const [activeCityId, setActiveCityId] = useState(null);
+
+  const activeCity = useMemo(
+    () => cityHubs.find((city) => city.id === activeCityId),
+    [activeCityId],
+  );
+
+  function openCity(cityId, targetSectionId = "city-detail") {
+    const city = cityHubs.find((hub) => hub.id === cityId);
+
+    if (!city?.isBookable) {
+      return;
+    }
+
+    setActiveCityId(cityId);
+    scrollToSection(targetSectionId);
+  }
+
+  function showAllHubs() {
+    setActiveCityId(null);
+    scrollToSection("top");
+  }
+
   return (
     <div className="page-shell">
       <div className="background-grid" aria-hidden="true" />
 
       <header className="site-header">
-        <a className="brand" href="#top">
+        <button
+          className="brand"
+          type="button"
+          onClick={showAllHubs}
+          aria-label="Telangana Safari home"
+        >
           <span className="brand-mark">
             <img src={logoUrl} alt="Telangana Safari logo" />
           </span>
           <span className="brand-lockup">
             <strong>Telangana Safari</strong>
-            <span>Waterfalls, heritage sites, tribal routes, and forest journeys.</span>
+            <span>Telangana travel packages</span>
           </span>
-        </a>
+        </button>
 
-        <nav className="site-nav" aria-label="Primary">
-          <a href="#posters">Destinations</a>
-          <a href="#contact">Book</a>
+        <nav className="site-nav" aria-label="Primary navigation">
+          <a href="#top">Hubs</a>
+          {activeCity ? <a href="#packages">Packages</a> : null}
+          {activeCity ? <a href="#custom-package">Custom package</a> : null}
+          <a className={activeCity ? "nav-secondary" : undefined} href="#how-it-works">
+            How it works
+          </a>
+          <a className={activeCity ? "nav-secondary" : undefined} href="#contact">
+            Contact
+          </a>
         </nav>
 
         <a
           className="header-pill"
-          href="https://wa.me/919700938985"
+          href={whatsappUrl(generalEnquiry)}
           target="_blank"
           rel="noreferrer"
         >
-          WhatsApp 9700938985
+          <span>WhatsApp</span>
+          <span className="header-pill-number">+91 {contactNumber.slice(2)}</span>
         </a>
       </header>
 
       <main>
-        <section className="hero" id="top">
+        <section className="hero home-hero" id="top">
           <div className="hero-copy">
-            <p className="kicker">Mulugu district and beyond</p>
-            <h1>Discover Mulugu's must-visit escapes.</h1>
+            <p className="kicker">Telangana travel hubs</p>
+            <h1>Build packages around the right place first</h1>
             <p className="hero-subtext">
-              Weekend departures from Warangal and Hyderabad covering Bogatha,
-              Laknavaram, Ramappa, Medaram, and offbeat tribal and heritage routes.
+              Trips are currently open for Mulugu only. Hyderabad, Warangal, and
+              Nizamabad are listed as upcoming coverage, while the live package
+              flow stays focused on the routes your operator can handle now.
             </p>
 
             <div className="hero-actions">
-              <a className="button button-primary" href="#posters">
-                View destinations
-              </a>
+              <button className="button button-primary" type="button" onClick={() => openCity("mulugu", "packages")}>
+                Open Mulugu packages
+              </button>
               <a
                 className="button button-secondary"
-                href="https://wa.me/919700938985"
-                target="_blank"
-                rel="noreferrer"
+                href="#destination-hubs"
               >
-                Book on WhatsApp
+                View future hubs
               </a>
             </div>
 
-            <div className="fact-row" aria-label="Quick facts">
-              {quickFacts.map((fact) => (
+            <div className="fact-row" aria-label="Telangana package quick facts">
+              {homeQuickFacts.map((fact) => (
                 <article className="fact-pill" key={fact.label}>
                   <strong>{fact.value}</strong>
                   <span>{fact.label}</span>
                 </article>
               ))}
             </div>
-
-            <div className="chip-row" aria-label="Places covered">
-              {placeChips.map((chip) => (
-                <span key={chip}>{chip}</span>
-              ))}
-            </div>
           </div>
 
-          <div className="hero-collage" aria-label="Telangana Safari posters">
-            <article className="poster-frame poster-main">
-              <img
-                src={muluguCoverPoster}
-                alt="Telangana Safari Mulugu district overview poster."
-                fetchPriority="high"
-              />
-            </article>
-            <article className="poster-frame poster-side poster-top">
-              <img
-                src={laknavaramPoster}
-                alt="Telangana Safari poster featuring Laknavaram Lake."
-              />
-            </article>
-            <article className="poster-frame poster-side poster-bottom">
-              <img
-                src={janagalanchaPoster}
-                alt="Telangana Safari poster featuring Janagalancha Fort."
-              />
-            </article>
+          <div className="hub-grid" id="destination-hubs" aria-label="Destination hubs">
+            {cityHubs.map((city) => (
+              <button
+                className={`hub-card${city.isBookable ? "" : " hub-card-unavailable"}`}
+                type="button"
+                aria-pressed={city.isBookable ? city.id === activeCityId : undefined}
+                aria-disabled={city.isBookable ? undefined : "true"}
+                disabled={!city.isBookable}
+                onClick={() => openCity(city.id)}
+                key={city.id}
+              >
+                <span className="hub-card-media">
+                  <img src={city.image} alt={city.imageAlt} loading="lazy" />
+                </span>
+                <span className="hub-card-content">
+                  <span className="hub-card-status">{city.availabilityLabel}</span>
+                  <span className="eyebrow">{city.eyebrow}</span>
+                  <strong>{city.cardTitle}</strong>
+                  <span>{city.summary}</span>
+                  <span className="hub-card-action">
+                    {city.isBookable ? "Open packages" : "Route preview only"}
+                  </span>
+                </span>
+              </button>
+            ))}
           </div>
         </section>
 
-        <section className="poster-showcase" id="posters">
+        {activeCity ? (
+          <>
+            <section className="hero city-detail-hero" id="city-detail">
+              <div className="hero-copy">
+                <p className="kicker">{activeCity.region}</p>
+                <h1>{activeCity.heroTitle}</h1>
+                <p className="hero-subtext">{activeCity.intro}</p>
+
+                <div className="hero-actions">
+                  <a className="button button-primary" href="#packages">
+                    Explore packages
+                  </a>
+                  <button className="button button-secondary" type="button" onClick={showAllHubs}>
+                    All hubs
+                  </button>
+                </div>
+
+                <div className="fact-row" aria-label={`${activeCity.name} package quick facts`}>
+                  {activeCity.quickFacts.map((fact) => (
+                    <article className="fact-pill" key={fact.label}>
+                      <strong>{fact.value}</strong>
+                      <span>{fact.label}</span>
+                    </article>
+                  ))}
+                </div>
+
+                <div className="chip-row" aria-label={`${activeCity.name} places covered`}>
+                  {activeCity.placeChips.map((chip) => (
+                    <span key={chip}>{chip}</span>
+                  ))}
+                </div>
+              </div>
+
+              <aside className="hero-feature" aria-label={`${activeCity.name} package planner`}>
+                <img src={activeCity.image} alt={activeCity.imageAlt} fetchpriority="high" />
+                <div className="hero-feature-panel">
+                  <p className="eyebrow">Package planner</p>
+                  <h2>{activeCity.panelTitle}</h2>
+                  <div className="hero-feature-meta">
+                    {activeCity.panelMeta.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                  <div className="route-line">
+                    {activeCity.routeThemes.map((theme) => (
+                      <span key={theme}>{theme}</span>
+                    ))}
+                  </div>
+                </div>
+              </aside>
+            </section>
+
+            <section className="packages-section" id="packages">
+              <div className="section-heading">
+                <p className="kicker">Tour packages</p>
+                <h2>{activeCity.packageHeading.title}</h2>
+                <p>{activeCity.packageHeading.copy}</p>
+              </div>
+
+              <div className="package-grid">
+                {activeCity.packages.map((travelPackage) => (
+                  <PackageCard
+                    cityName={activeCity.name}
+                    travelPackage={travelPackage}
+                    key={travelPackage.id}
+                  />
+                ))}
+              </div>
+            </section>
+
+            <section className="custom-package-section" id="custom-package">
+              <div className="section-heading">
+                <p className="kicker">Build your own package</p>
+                <h2>{activeCity.customHeading.title}</h2>
+                <p>{activeCity.customHeading.copy}</p>
+              </div>
+
+              <CustomPackageBuilder
+                cityName={activeCity.name}
+                destinations={activeCity.destinations}
+                pickupOptions={activeCity.pickupOptions}
+              />
+            </section>
+          </>
+        ) : null}
+
+        <section className="process-section" id="how-it-works">
           <div className="section-heading">
-            <p className="kicker">Signature destinations</p>
-            <h2>From Bogatha and Laknavaram to Ramappa, Medaram, and more.</h2>
+            <p className="kicker">How it works</p>
+            <h2>Simple planning, clear routes, local support</h2>
           </div>
 
-          <div className="poster-grid">
-            {destinationStories.map((story) => (
-              <article className="poster-card" key={story.title}>
-                <div className="poster-media">
-                  <img src={story.image} alt={story.alt} loading="lazy" />
-                </div>
-
-                <div className="poster-content">
-                  <p className="poster-type">{story.type}</p>
-                  <h3>{story.title}</h3>
-                  <p className="poster-subtitle">{story.subtitle}</p>
-                  <p className="poster-summary">{story.summary}</p>
-                  <span className="distance-chip">{story.distance}</span>
-                </div>
+          <div className="process-grid">
+            {howItWorks.map((step, index) => (
+              <article className="process-card" key={step.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="cta-poster" id="contact">
-          <div className="cta-copy">
+        <section className="contact-band" id="contact">
+          <div>
             <p className="kicker">Plan your journey</p>
-            <h2>Book your next Telangana weekend escape directly on WhatsApp.</h2>
+            <h2>Start with Mulugu, then customize the route around your group</h2>
           </div>
 
-          <div className="cta-actions">
+          <div className="contact-actions">
             <a
               className="button button-primary"
-              href="https://wa.me/919700938985"
+              href={whatsappUrl(generalEnquiry)}
               target="_blank"
               rel="noreferrer"
             >
-              Start on WhatsApp
+              Enquire on WhatsApp
             </a>
-
-            <div className="cta-tags" aria-hidden="true">
-              <span>Warangal</span>
-              <span>Hyderabad</span>
-              <span>Weekend departures</span>
-            </div>
+            <p>Share travel date, pickup city, passenger count, and Mulugu package name.</p>
           </div>
         </section>
       </main>
+
+      <MobileStickyBar activeCity={activeCity} openCity={openCity} />
     </div>
+  );
+}
+
+function MobileStickyBar({ activeCity, openCity }) {
+  const label = activeCity ? activeCity.name : "Mulugu";
+
+  return (
+    <aside className="mobile-sticky-bar" aria-label="Quick enquiry actions">
+      <div>
+        <span>{label}</span>
+        <strong>{activeCity ? "Build or enquire" : "Trips open now"}</strong>
+      </div>
+
+      <div className="mobile-sticky-actions">
+        {activeCity ? (
+          <button
+            className="button button-secondary"
+            type="button"
+            onClick={() => scrollToSection("custom-package")}
+          >
+            Custom
+          </button>
+        ) : (
+          <button className="button button-secondary" type="button" onClick={() => openCity("mulugu", "packages")}>
+            Packages
+          </button>
+        )}
+        <a
+          className="button button-primary"
+          href={whatsappUrl(generalEnquiry)}
+          target="_blank"
+          rel="noreferrer"
+        >
+          WhatsApp
+        </a>
+      </div>
+    </aside>
   );
 }
 
