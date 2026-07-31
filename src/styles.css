@@ -354,6 +354,7 @@ h3 {
   flex-wrap: wrap;
   gap: 8px;
   align-items: flex-start;
+  min-width: 0;
 }
 
 .chip-row span,
@@ -593,10 +594,12 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  min-width: 0;
 }
 
 .package-card {
   display: grid;
+  min-width: 0;
   overflow: hidden;
   border: 1px solid var(--stroke);
   border-radius: 8px;
@@ -620,6 +623,7 @@ h3 {
 
 .package-media {
   position: relative;
+  min-width: 0;
   min-height: 240px;
   background: #e6f0ea;
 }
@@ -655,6 +659,12 @@ h3 {
   display: grid;
   gap: 14px;
   padding: 20px;
+}
+
+.package-body,
+.package-heading,
+.package-meta {
+  min-width: 0;
 }
 
 .package-heading {
@@ -1289,6 +1299,7 @@ h3 {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 10px;
+    min-width: 0;
   }
 
   .package-footer .button {
@@ -1400,6 +1411,16 @@ h3 {
   .package-meta {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .package-footer {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .package-footer .button {
+    width: 100%;
   }
 
   .destination-option {
