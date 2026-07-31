@@ -1114,9 +1114,8 @@ h3 {
   }
 
   .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 20;
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 10px;
@@ -1124,7 +1123,6 @@ h3 {
     padding: 8px 0 10px;
     border-bottom: 1px solid rgba(31, 74, 52, 0.1);
     background: rgba(244, 248, 241, 0.88);
-    backdrop-filter: blur(18px);
   }
 
   .brand {
@@ -1244,7 +1242,7 @@ h3 {
   .contact-band,
   .city-detail-hero {
     margin-top: 72px;
-    scroll-margin-top: 154px;
+    scroll-margin-top: 18px;
   }
 
   .package-grid,
@@ -1287,7 +1285,16 @@ h3 {
   }
 
   .package-footer {
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .package-footer .button {
+    width: auto;
+    min-height: 44px;
+    padding: 0 18px;
   }
 
   .contact-band {
@@ -1306,15 +1313,15 @@ h3 {
 
   .mobile-sticky-bar {
     position: fixed;
-    right: 12px;
-    bottom: calc(12px + env(safe-area-inset-bottom));
-    left: 12px;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    left: 10px;
     z-index: 30;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 10px;
     align-items: center;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid rgba(31, 74, 52, 0.16);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.94);
@@ -1354,11 +1361,12 @@ h3 {
   }
 
   .mobile-sticky-actions .button {
-    min-height: 44px;
+    min-height: 42px;
     width: auto;
     padding: 0 12px;
     font-size: 0.86rem;
   }
+
 }
 
 @media (max-width: 520px) {

@@ -282,13 +282,15 @@ function App() {
 }
 
 function MobileStickyBar({ activeCity, openCity }) {
-  const label = activeCity ? activeCity.name : "Mulugu";
+  if (activeCity) {
+    return null;
+  }
 
   return (
     <aside className="mobile-sticky-bar" aria-label="Quick enquiry actions">
       <div>
-        <span>{label}</span>
-        <strong>{activeCity ? "Build or enquire" : "Trips open now"}</strong>
+        <span>Mulugu</span>
+        <strong>Trips open now</strong>
       </div>
 
       <div className="mobile-sticky-actions">
